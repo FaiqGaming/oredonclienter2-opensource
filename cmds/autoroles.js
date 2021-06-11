@@ -7,7 +7,7 @@ module.exports = {
   aliases: [],
   description: "Giving [name] roles if someone joined your own server!",
   guildOnly: true,
-  usage: "o!autoroles [status/set] [args]",
+  usage: "o!autorolessssssssssssssssssssssssssssssssssssssssssssssx [status/set] [args]",
   async run(client, msg, args) {
     if (!msg.member.hasPermission("MANAGE_GUILD") && msg.author.id !== "297130271864520705") return msg.channel.send("You don't have permissions to executed this command!")
     if (!args[0]) {
@@ -53,18 +53,18 @@ module.exports = {
       msg.channel.send(`Successfully setup / switch roles to ${roles}`);
       client.guild.set(`guild.${msg.guild.id}.autoroles.roleID`, roles.id);
     } else if (args[0] == "reset") {
-      let data = client.guild.get(`guild.${msg.guild.id}.autoroles`);
+      let data = client.guild.get(`guild.${msg.guild.id}.autoroles`)
 
-      if (data.type === true || data.roleID) {
-        msg.channel.send("Successfully reset autoroles database!");
+      if (data.type === true && data.roleID) {
+        msg.channel.send("Successfully reset autoroles database!")
         client.guild.set(`guild.${msg.guild.id}.autoroles`, {
           type: false,
           roleID: null
         });
       } else {
-        return msg.channel.send(
+        msg.channel.send(
           "I think, you already reset database or I think, your config is not currently setup"
-        );
+        )
       }
     }
   }

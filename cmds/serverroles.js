@@ -7,7 +7,7 @@ module.exports = {
   async run(client, message, args) {
     const WxArtzEmbedBiarSyantik = require('discord.js').MessageEmbed;
 
-	let number = message.guild.roles.cache.array().sort().map((x,i) => `\`${i+1}\` - ${x.toString()}`)
+	let number = message.guild.roles.cache.array().sort().map((x,i) => `\`${i+1}\` - ${x}`)
 	number = chunk(number, 10);
 
 	let index = 0;

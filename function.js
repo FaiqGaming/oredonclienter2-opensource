@@ -1,4 +1,3 @@
-const { client, db, moment } = require('./server');
 
 class OredonFunction extends Error {
   constructor(message) {
@@ -46,7 +45,8 @@ module.exports = {
   },
 
   format: function(date) {
-    return moment(date)
+    const { moment } = require('./server.js');
+    return moment(date);
   },
 
   trimArray: function(arr, maxLen = 10) {
@@ -59,57 +59,67 @@ module.exports = {
   },
 
   allData: function() {
+    const { db } = require('./server.js');
     let allBerhasil = db.all()
     return allBerhasil;
   },
 
   fetchAllData: async function() {
+    const { db } = require('./server.js');
     let fetchAllBerhasil = await db.fetchAll()
     return fetchAllBerhasil;
   },
 
   hasData: function(value) {
+    const { db } = require('./server.js');
     let hasBerhasil = db.has(value)
     return hasBerhasil;
   },
 
   getData: function(value) {
+    const { db } = require('./server.js');
     let getBerhasil = db.get(value)
     return getBerhasil;
   },
 
   fetchData: async function(value) {
+    const { db } = require('./server.js');
     let getBerhasil = await db.fetch(value)
     return getBerhasil;
   },
 
   addData: function(value, setValue) {
+    const { db } = require('./server.js');
     let addBerhasil = db.add(value, setValue)
     return addBerhasil;
   },
 
   subtractData: function(value, setValue) {
+    const { db } = require('./server.js');
     let subtractBerhasil = db.subtract(value, setValue)
     return subractBerhasil;
   },
 
   setData: function(value, setValue) {
+    const { db } = require('./server.js');
     let setBerhasil = db.set(value, setValue)
     return setBerhasil;
   },
 
   pushData: function(value, setValue) {
+    const { db } = require('./server.js');
     let pushBerhasil = db.push(value, setValue)
     return pushBerhasil;
   },
 
   deleteData: function(value) {
+    const { db } = require('./server.js');
     let deleteBerhasil = db.delete(value)
     return deleteBerhasil;
   },
 
   fetchUser: async function(id) {
-    let { msg } = require('./server')
+    let { client } = require('./server')
     let fetchUser = await client.users.fetch(id)
     if (!fetchUser) throw new OredonFunction("Please enter a valid user id to fetch.")
     
@@ -117,7 +127,7 @@ module.exports = {
   },
 
   getUser: function(userID) {
-    let { msg } = require('./server')
+    let { client } = require('./server')
     let getMember = client.users.cache.get(userID)
 
     if (!getMember) throw new OredonFunction("Please enter a valid user id value.")
@@ -126,7 +136,7 @@ module.exports = {
   },
 
   getAvatar: function(id) {
-    let { msg } = require('./server')
+    let { client } = require('./server')
     let member = clinet.users.cache.get(id)
     if (!member) throw new OredonFunction("Please enter a valid user id value.")
     return member.user.displayAvatarURL({ dynamic: true, format: "png", size: 512 });
@@ -140,7 +150,7 @@ module.exports = {
   },
 
   getChannel: function(channelID) {
-    let { msg } = require('./server')
+    let { client } = require('./server')
     let getChannels = clinet.channels.cache.get(channelID)
     if (!getChannels) throw new OredonFunction("Please enter a valid channel id value.")
     
@@ -156,7 +166,7 @@ module.exports = {
   },
 
   getEmoji: function(emojiID) {
-    let { msg } = require('./server')
+    let { client } = require('./server')
     let getEmojis = client.emojis.cache.get(emojiID)
     if (!getEmojis) throw new OredonFunction("Please enter a valid emoji id value.")
     

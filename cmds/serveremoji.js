@@ -7,7 +7,7 @@ module.exports = {
   async run(client, message, args) {
     const emoji = require('discord.js').MessageEmbed;
 
-	let number = message.guild.emojis.cache.array().map((x,i)=> `${i+1} - ${x} \\${x} (${x.name})`)
+	let number = message.guild.emojis.cache.array().map((x,i)=> `${i+1} - ${x} \\${x.toString()} (${x.name})`)
 	number = chunk(number, 10);
   
   if (!number) return message.channel.send("Sorry, this server not have emoji")

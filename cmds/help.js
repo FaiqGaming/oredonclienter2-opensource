@@ -24,6 +24,7 @@ module.exports = {
           "**Play, Queue, Stop, Skip, Np, Filters, Loop, Volume, Lyrics, Pause, Resume**"
         )
         .addField("🔒 Moderation", "**Modlog, Ban, Kick, Purge, Badword, Welcome, Goodbye, Autoroles**")
+        .setImage("https://media.discordapp.net/attachments/846491056111747092/847582616878055424/standard_2.gif")
         //       .addField("💸 Economy", '**Bank, Daily, Fish, Inventory, Level, Market, Mine Pay, Pickaxe, Profile, Rep, Repair, Sell, Work**')
         //       .addField("🏁 Fun", '**Cat, Dog, Achievement, Slots, 8Ball**')
         //       .addField("🔞 NSFW", '**Hentai, NewdNeko**')

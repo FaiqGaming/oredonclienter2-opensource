@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { format } = require('../function');
 
 const statusAnimation = {
   online: `<a:AnimatedOnline:597740720060760064>`,
@@ -66,7 +67,7 @@ module.exports = {
     const member = message.guild.member(user);
     const userFlags = user.flags.toArray();
     let embed = new Discord.MessageEmbed()
-      .setAuthor(`${user.tag}'s Information'`, user.displayAvatarURL({ dynamic: true, format: "png" }))
+      .setAuthor(`${user.tag}'s Information`, user.displayAvatarURL({ dynamic: true, format: "png" }))
       .setColor("RANDOM")
       .setThumbnail(user.displayAvatarURL({ dynamic: true, format: "png" }))
       .addField("ID", `${user.id}`, true)
@@ -78,21 +79,9 @@ module.exports = {
         true
       )
       .addField(
-        "Registered",
-        new Date(user.createdAt)
-          .toISOString()
-          .replace(/T/, " ")
-          .replace(/\..+/, ""),
-        true
-      )
+        "Registered", format(user.createdAt).format('llll'), true)
       .addField(
-        "Joined",
-        new Date(member.joinedAt)
-          .toISOString()
-          .replace(/T/, " ")
-          .replace(/\..+/, ""),
-        true
-      )
+        "Joined", format(member.joinedAt).format('llll'), true)
       .addField(
         "Status",
         statusAnimation[user.presence.status] +
